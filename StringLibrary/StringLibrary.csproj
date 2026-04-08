@@ -1,15 +1,17 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
+
+    <!-- KEEP ONLY ONE VERSION -->
     <Version>1.0.1</Version>
+
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
-    <!-- ADD THESE FOR NUGET -->
+    <!-- NUGET SETTINGS -->
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>StringExtensionLib</PackageId>
-    <Version>1.0.0</Version>
     <Authors>Rubiya</Authors>
     <Description>String extension methods library</Description>
   </PropertyGroup>

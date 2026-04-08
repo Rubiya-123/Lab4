@@ -2,7 +2,7 @@ trigger:
 - master
 
 pool:
-  name: MyAgentPool
+  name: Lab4Agent
 
 steps:
 - task: UseDotNet@2

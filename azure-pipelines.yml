@@ -1,0 +1,26 @@
+trigger:
+- master
+
+pool:
+  name: MyAgentPool
+
+steps:
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: '8.x'
+
+- script: dotnet restore StringExtensionLib/StringExtensionLib.csproj
+  displayName: Restore
+
+- script: dotnet build StringExtensionLib/StringExtensionLib.csproj --configuration Release
+  displayName: Build
+
+- script: dotnet pack StringExtensionLib/StringExtensionLib.csproj --configuration Release --output $(Build.ArtifactStagingDirectory)
+  displayName: Pack NuGet
+
+- task: NuGetCommand@2
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+    publishVstsFeed: 'string-extensions-feed'

@@ -8,15 +8,15 @@ steps:
 - task: UseDotNet@2
   inputs:
     packageType: 'sdk'
-    version: '8.x'
+    version: '10.x'
 
-- script: dotnet restore StringExtensionLib/StringExtensionLib.csproj
+- script: dotnet restore StringLibrary.slnx
   displayName: Restore
 
-- script: dotnet build StringExtensionLib/StringExtensionLib.csproj --configuration Release
+- script: dotnet build StringLibrary.slnx --configuration Release
   displayName: Build
 
-- script: dotnet pack StringExtensionLib/StringExtensionLib.csproj --configuration Release --output $(Build.ArtifactStagingDirectory)
+- script: dotnet pack StringLibrary/StringLibrary.csproj --configuration Release --output $(Build.ArtifactStagingDirectory)
   displayName: Pack NuGet
 
 - task: NuGetCommand@2

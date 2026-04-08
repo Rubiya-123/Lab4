@@ -19,6 +19,11 @@ steps:
 - script: dotnet pack --configuration Release --output $(Build.ArtifactStagingDirectory)
   displayName: Pack NuGet
 
+# Authenticate with Azure Artifacts
+- task: NuGetAuthenticate@1
+  displayName: 'Authenticate with Azure Artifacts'
+
+# Push the package
 - task: NuGetCommand@2
   inputs:
     command: 'push'
